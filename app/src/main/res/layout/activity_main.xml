@@ -29,7 +29,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
         android:text="MyRestaurants"
-        android:textColor="#9C27B0"
+        android:textColor="#75F802"
         android:textSize="40sp"
         android:textStyle="bold" />
 

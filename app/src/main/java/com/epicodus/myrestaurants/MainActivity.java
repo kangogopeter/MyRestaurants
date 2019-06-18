@@ -16,16 +16,19 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @BindView(R.id.findRestaurantsButton) Button mFindRestaurantsButton;
-    @BindView(R.id.locationEditText)EditText mLocationEditTextView;
-    @BindView(R.id.appNameTextView) TextView mAppNameTextView;
+    @BindView(R.id.findRestaurantsButton)
+    Button mFindRestaurantsButton;
+    @BindView(R.id.locationEditText)
+    EditText mLocationEditTextView;
+    @BindView(R.id.appNameTextView)
+    TextView mAppNameTextView;
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
 
-private Button mFindRestaurantButton;
+    private Button mFindRestaurantButton;
     private EditText mLocationEditText;
 //private TextView mAppNameTextView;
 
@@ -50,15 +53,17 @@ private Button mFindRestaurantButton;
         mAppNameTextView.setTypeface(SquirrelFont);
 
 
-        mFindRestaurantsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String location = mLocationEditText.getText().toString();
-                Intent intent = new Intent(MainActivity.this, RestaurantsActivity.class);
-                intent.putExtra("location", location);
-                startActivity(intent);
+        mFindRestaurantsButton.setOnClickListener(this);
+    }
 
-            }
-        });
+    @Override
+    public void onClick(View view) {
+        if (view == mFindRestaurantsButton) {
+            String location = mLocationEditText.getText().toString();
+            Intent intent = new Intent(MainActivity.this, RestaurantsActivity.class);
+            intent.putExtra("location", location);
+            startActivity(intent);
+
+        }
     }
 }
